@@ -1,0 +1,15 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN pip install --no-cache-dir \
+    "dlt[filesystem,pyiceberg]" \
+    pyarrow \
+    s3fs \
+    boto3 \
+    numpy \
+    tqdm
+
+COPY . /app/
+
+CMD ["tail", "-f", "/dev/null"]
